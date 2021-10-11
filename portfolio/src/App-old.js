@@ -1,13 +1,22 @@
 import React, { Component } from 'react';
-import Projects from './Projects';
 
 class App extends Component {
-    state =  { displayBio: false}; // Define values outside of constructor
+    constructor() {
+        super(); // This is how to get methods and vars from superclasses
+        this.state =  { displayBio: false }; // This is how to define a state
 
-    toggleDisplayBio = () => { // Refactor in this style
+        this.toggleDisplayBio = this.toggleDisplayBio.bind(this) // This is how to bind the this to a helper function
+    }
+
+//    showLess() {
+//        this.setState({displayBio:false}) This is how to modify the state properly
+//    }
+
+    toggleDisplayBio() {
         this.setState({displayBio: !this.state.displayBio}) // This is how to toggle a state
     }
-    render() { // This is an exception as it is fundamental method
+    render() {
+      
         return (
             <div>
                 <h1>Hello!</h1>
@@ -26,8 +35,6 @@ class App extends Component {
                         <button onClick={this.toggleDisplayBio}>Read more</button>
                     </div>)
                 }
-                <hr />
-                <Projects />
             </div>
         )
     }
