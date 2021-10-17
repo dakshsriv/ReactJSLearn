@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import PROJECTS from './data/projects';
+import SOCIAL_PROFILES from 'data/socialProfiles';
 
-class Project extends Component {
+class Profile extends Component {
     render() {
         console.log('this.props', this.props);
 
@@ -18,17 +18,17 @@ class Project extends Component {
     }
 }
 
-class Projects extends Component {
+class Profiles extends Component {
     render () {
         return (
             <div>
-                <h2>Highlighted Projects</h2>
+                <h2>Highlighted Profiles</h2>
                 <div>
                     {
-                        PROJECTS.map(PROJECT => {
+                        SOCIAL_PROFILESS.map(SOCIAL_PROFILES => {
                             return (
-                                <Project key={PROJECT.id} project={PROJECT}/>
-                                // <div key={PROJECT.id}>{PROJECT.title}</div>  Use key={PROJECT.id} to help React distinguish this
+                                <Profile key={SOCIAL_PROFILES.id} project={SOCIAL_PROFILES}/>
+                                // <div key={SOCIAL_PROFILES.id}>{SOCIAL_PROFILES.title}</div>  Use key={SOCIAL_PROFILES.id} to help React distinguish this
                             )
                         }) // Use this to scalably map data
                     }
@@ -37,5 +37,3 @@ class Projects extends Component {
         )
     }
 }
-
-export default Projects;
