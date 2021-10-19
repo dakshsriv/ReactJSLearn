@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Projects from './Projects';
 import SocialProfiles from './SocialProfiles';
+import profile from './assets/Crab_Nebula.png';
 
 class App extends Component {
     state =  { displayBio: false}; // Define values outside of constructor
@@ -8,9 +9,10 @@ class App extends Component {
     toggleDisplayBio = () => { // Refactor in this style
         this.setState({displayBio: !this.state.displayBio}) // This is how to toggle a state
     }
-    render() { // This is an exception as it is fundamental method
+    render() { // This is an exception as it is fundamental method. Line 15 has stuff for specifying css class.
         return (
             <div>
+                <img src={profile} alt='profile' className="profile"/> 
                 <h1>Hello!</h1>
                 <p>My name is Daksh. I'm a young mathematician and scientist.</p>
                 <p>I like working on projects.</p>
