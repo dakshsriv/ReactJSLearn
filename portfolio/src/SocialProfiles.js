@@ -8,7 +8,7 @@ class SocialProfile extends Component {
         const { link, image} = this.props.project; // Javascript destruction
         
         return (
-            <div style={{ display: 'inline-block', width: 130, margin: 10 }}>
+            <div style={{ display: 'inline-block', width: 60, margin: 10 }}>
                 <a href={link}><img src={image} alt='profile' style={{ width: 35, height: 35}} /></a>
             </div>
         )
