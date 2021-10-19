@@ -6,7 +6,7 @@ import twitterIcon from '../assets/twitter_icon.png'
 const SOCIAL_PROFILES = [
     {
         id: 1,
-        link: 'daksh.srivastava.10@gmail.com',
+        link: 'https://gmail.com/daksh.srivastava.10@gmail.com',
         image: emailIcon
     },
 
@@ -28,4 +28,4 @@ const SOCIAL_PROFILES = [
     }
 ];
 
-export default SOCIAL_PROJECTS;
+export default SOCIAL_PROFILES;
