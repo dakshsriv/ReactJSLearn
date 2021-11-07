@@ -4,3 +4,5 @@ import App from './App';
 import './index.css'; // <-- LINK STYLESHEET IN THIS FILE
 
 ReactDOM.render(<App />, document.getElementById('root')); 
+
+// Live-server is needed to be installed
