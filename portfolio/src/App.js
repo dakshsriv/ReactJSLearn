@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Projects from './Projects';
 import SocialProfiles from './SocialProfiles';
 import profile from './assets/Crab_Nebula.png';
+import Title from './Title.js';
 
 class App extends Component {
     state =  { displayBio: false}; // Define values outside of constructor
@@ -14,7 +15,8 @@ class App extends Component {
             <div>
                 <img src={profile} alt='profile' className="profile"/> 
                 <h1>Hello!</h1>
-                <p>My name is Daksh. I'm a young mathematician and scientist.</p>
+                <p>My name is Daksh. </p>
+                <Title />
                 <p>I like working on projects.</p>
                 {
                     this.state.displayBio ? (
