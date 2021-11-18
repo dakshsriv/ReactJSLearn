@@ -3,6 +3,7 @@ import Projects from './Projects';
 import SocialProfiles from './SocialProfiles';
 import profile from '../assets/Crab_Nebula.png';
 import Title from './Title.js';
+import Jokes from './Jokes.js';
 
 class App extends Component {
     state =  { displayBio: false}; // Define values outside of constructor
@@ -35,6 +36,8 @@ class App extends Component {
                 <Projects />
                 <hr />
                 <SocialProfiles />
+                <hr />
+                <Jokes />
             </div>
         )
     }
