@@ -24382,26 +24382,17 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var addToDict = function addToDict(info) {
-  var _info = {
-    info: info
-  },
-      category = _info.category,
-      type = _info.type,
-      setup = _info.setup,
-      delivery = _info.delivery,
-      flags = _info.flags,
-      id = _info.id,
-      safe = _info.safe,
-      lang = _info.lang;
-  jokesDict.push({
-    key: {
-      setup: setup
-    },
-    value: {
-      delivery: delivery
-    }
-  });
+var Joke = function Joke(props) {
+  var _props$jokeInstance = props.jokeInstance,
+      category = _props$jokeInstance.category,
+      type = _props$jokeInstance.type,
+      setup = _props$jokeInstance.setup,
+      delivery = _props$jokeInstance.delivery,
+      flags = _props$jokeInstance.flags,
+      id = _props$jokeInstance.id,
+      safe = _props$jokeInstance.safe,
+      lang = _props$jokeInstance.lang;
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, setup, " ", /*#__PURE__*/_react.default.createElement("em", null, delivery), " "));
 };
 
 var Jokes = /*#__PURE__*/function (_Component) {
@@ -24421,8 +24412,7 @@ var Jokes = /*#__PURE__*/function (_Component) {
     _this = _super.call.apply(_super, [this].concat(args));
 
     _defineProperty(_assertThisInitialized(_this), "state", {
-      jokesl: {},
-      jokesDict: {}
+      jokes: {}
     });
 
     return _this;
@@ -24433,40 +24423,30 @@ var Jokes = /*#__PURE__*/function (_Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      /* fetch("https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,religious,political,racist,sexist,explicit&type=twopart").then(response => response.json())
-      .then(json => this.setState({ joke: json})); */
-      fetch("https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,religious,political,racist,sexist,explicit&type=twopart&amount=10").then(function (response) {
+      fetch("https://v2.jokeapi.dev/joke/Any?safe-mode&type=twopart&amount=10").then(function (response) {
         return response.json();
       }).then(function (json) {
-        return _this2.setState({
-          jokesl: json
+        console.log(json.amount);
+        console.log(json.jokes);
+
+        _this2.setState({
+          jokes: json
         });
       });
     }
   }, {
     key: "render",
     value: function render() {
-      var _this$state$jokesl = this.state.jokesl,
-          error = _this$state$jokesl.error,
-          amount = _this$state$jokesl.amount,
-          jokes = _this$state$jokesl.jokes;
-      var svar = jokes.map(function (joke) {
-        return /*#__PURE__*/_react.default.createElement("addToDict", {
-          info: joke
+      // const {category, type, setup, delivery, flags, safe, id, lang} = this.state.jokes.jokes
+      //const randomJokes = this.state.jokes.jokes.map((j) => j.setup
+      var jokesRender = this.state.jokes.jokes;
+      console.log(jokesRender);
+      return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h2", null, "Highlighted Jokes"), /*#__PURE__*/_react.default.createElement("span", null, (jokesRender || []).map(function (joke) {
+        return /*#__PURE__*/_react.default.createElement(Joke, {
+          jokeInstance: joke
         });
-      });
+      })));
     }
-    /*
-    render() {
-        const {error, category, type, setup, delivery, flags, id, safe, lang} = this.state.joke
-         return (
-            <div>
-                <h2>Highlighted Joke</h2>
-                <p>{setup} <em>{delivery}</em></p>
-            </div>
-        )
-    } */
-
   }]);
 
   return Jokes;
@@ -24691,7 +24671,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "37675" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44137" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

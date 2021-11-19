@@ -1,38 +1,42 @@
 import React, { Component } from 'react';
 
-
-const addToDict = (info) => {
-    const{ category, type, setup, delivery, flags, id, safe, lang} = {info};
-    jokesDict.push({key: {setup}, value: {delivery}})
+const Joke = props => {
+    const{ category, type, setup, delivery, flags, id, safe, lang} = props.jokeInstance;
+    return (
+    <div>
+        <p>{setup} <em>{delivery}</em> </p>
+    </div>
+    )
 }
 
-
 class Jokes extends Component {
-    state = { jokesl: {}, jokesDict: {} };
+    state = { jokes: {} };
 
     componentDidMount() {
-        /* fetch("https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,religious,political,racist,sexist,explicit&type=twopart").then(response => response.json())
-        .then(json => this.setState({ joke: json})); */
-        fetch("https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,religious,political,racist,sexist,explicit&type=twopart&amount=10").then(response => response.json())
-        .then(json => this.setState({jokesl: json}));
+        fetch("https://v2.jokeapi.dev/joke/Any?safe-mode&type=twopart&amount=10")
+        .then(response => response.json())
+        .then(json => { 
+            console.log( json.amount)
+            console.log( json.jokes)
+            this.setState({ jokes: json})
+        }); 
 
     }
 
     render() {
-        const{error, amount, jokes} = this.state.jokesl
-        var svar = jokes.map(joke => (<addToDict info={joke} />));
-    }
-    /*
-    render() {
-        const {error, category, type, setup, delivery, flags, id, safe, lang} = this.state.joke
+        // const {category, type, setup, delivery, flags, safe, id, lang} = this.state.jokes.jokes
+        //const randomJokes = this.state.jokes.jokes.map((j) => j.setup
+        const jokesRender = this.state.jokes.jokes;
+        console.log(jokesRender);
 
         return (
             <div>
-                <h2>Highlighted Joke</h2>
-                <p>{setup} <em>{delivery}</em></p>
+                <h2>Highlighted Jokes</h2>
+                <span>{(jokesRender || []).map(joke => (<Joke jokeInstance={joke} />)) }</span>
             </div>
         )
-    } */
+    } 
 }
+
 
 export default Jokes
